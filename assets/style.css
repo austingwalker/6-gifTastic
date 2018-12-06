@@ -1,5 +1,7 @@
 .gifButtons {
     padding: 30px;
+    
+    
 }
 
 .gifBtnS {
@@ -10,6 +12,7 @@
 
 .gifAdd {
     padding: 30px;
+    padding-top: 0px;
 }
 
 .submit {
@@ -20,7 +23,26 @@
 #gifBox {
     float: left;
     margin: 10px;
-    padding: 5px;
+    padding: 10px;
+    background: grey;
+    color: white;
     
 }
+
+.customJumbo {
+    padding-top: 15px; 
+    padding-bottom: 0px;
+    color:white;
+    background: transparent;
+    text-align: center;
+}
+
+body {
+    background-image: url("http://i66.tinypic.com/2zjfh34.jpg");
+    z-index: 0;
+}
+
+/* <a href="http://tinypic.com?ref=2zjfh34" target="_blank"><img src="http://i66.tinypic.com/2zjfh34.jpg" border="0" alt="Image and video hosting by TinyPic"></a> */
+
+
 

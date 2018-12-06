@@ -1,4 +1,6 @@
-var gifs = ["baseball", "basketball", "football", "soccer", "mlb", "nba", "nfl", "mls"];
+//Global Variables
+
+var gifs = ["baseball", "basketball", "football", "soccer", "golf", "mlb", "nba", "nfl", "mls", "pga"];
 
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EX1IL7kkzCLr1MLYfMV9JmzSRkLaaIAx";
 
@@ -6,10 +8,15 @@ var queryTerm = "";
 
 var buttonClicked = true;
 
-for(var i = 0; i < gifs.length; i++){
+// Generate starting page buttons
+function renderButtons(){
+
+    $(".gifButtons").empty();
+
+    for(var i = 0; i < gifs.length; i++){
 
     var gifBtn = $("<button>");
-    gifBtn.addClass("btn btn-primary gifBtnS");
+    gifBtn.addClass("btn btn-primary col-md-2 gifBtnS");
     gifBtn.attr("id", 'gif-' + i);
     gifBtn.attr("value", gifs[i]);
 
@@ -17,10 +24,16 @@ for(var i = 0; i < gifs.length; i++){
 
     $(".gifButtons").append(gifBtn);
 }
+}
+
+//Capitalize gif title function
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
+
+// Generate gifs function
 
 function generateGifs(builtQuery){
 
@@ -41,23 +54,21 @@ function generateGifs(builtQuery){
      
         var rating = $("<h5>" + "Rated: " + gifData.data[i].rating + "</h5>");
         
-        var image = $("<img id='picture'>").attr("src", gifData.data[i].images.fixed_height.url);
-        // var imageStill = $("<img id='picture'>").attr("src", gifData.data[i].images.fixed_height_still.url);
-
-       
-
+        var pause = $("<p>");
+        pause.text("Click to pause:");
+    
         var image = $("<img id='picture'>").attr("src", gifData.data[i].images.fixed_height.url);
             image.attr("data-state", "animate")
             image.attr("data-animate", gifData.data[i].images.fixed_height.url)
             image.attr("data-still", gifData.data[i].images.fixed_height_still.url)
             
         
-        // var imageStill = $("<img>").attr("src", gifData.data[i].images.fixed_height_still.url)
-        // image.attr("data-state")
+        
 
 
         gifBox.append(title);
         gifBox.append(rating);
+        gifBox.append(pause);
         gifBox.append(image);
 
 
@@ -71,6 +82,25 @@ function generateGifs(builtQuery){
     })
 
 }
+
+
+// Adding a new gif button
+
+$(document).on("click", ".submit", function(event){
+
+    event.preventDefault();
+
+    var gifName = $("#newGif").val().trim();
+
+    console.log(gifName)
+
+    gifs.push(gifName)
+
+    renderButtons();
+});
+
+
+// Gif buttons clicked
 
 $(document).on("click", ".gifBtnS", function(e){
 
@@ -88,6 +118,9 @@ $(document).on("click", ".gifBtnS", function(e){
 
 })
 
+
+// Gifs clicked 
+
 $(document).on("click", "#picture", function(){
 
     console.log($(this))
@@ -104,3 +137,5 @@ $(document).on("click", "#picture", function(){
 
     
 })
+
+renderButtons();

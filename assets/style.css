@@ -1,4 +1,26 @@
 .gifButtons {
-    padding: 100px;
-    background: grey;
+    padding: 30px;
 }
+
+.gifBtnS {
+    margin: 2px;
+    background: grey;
+    border: 0px;
+}
+
+.gifAdd {
+    padding: 30px;
+}
+
+.submit {
+    background: grey;
+    border: 0px;
+}
+
+#gifBox {
+    float: left;
+    margin: 10px;
+    padding: 5px;
+    
+}
+

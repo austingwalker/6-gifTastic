@@ -37,7 +37,7 @@ String.prototype.capitalize = function() {
 
 function generateGifs(builtQuery){
 
-    $.ajax({url: builtQuery, methos: "GET"}).done(function(gifData){
+    $.ajax({url: builtQuery, method: "GET"}).done(function(gifData){
 
         
 
